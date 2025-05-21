@@ -1,0 +1,33 @@
+<div class="search-container">
+  <input type="text" 
+         [(ngModel)]="searchTerm" 
+         (input)="onSearchInput()"
+         placeholder="Search Pokémon..."
+         class="search-input">
+  <button (click)="searchPokemon()" class="search-button">
+    <i class="search-icon">🔍</i>
+  </button>
+</div>
+
+<div class="pokemon-list-container">
+  <div class="pokemon-grid">
+    <div *ngFor="let pokemon of pokemons" 
+        class="pokemon-card"
+        (click)="onPokemonSelected(pokemon)">
+      <div class="pokemon-number">#{{ pokemon.id | number:'3.0-0' }}</div>
+      <img [src]="pokemon.imageUrl || 'assets/pokeball.png'" 
+           [alt]="pokemon.name" 
+           class="pokemon-image"
+           onerror="this.src='assets/pokeball.png'">
+      <div class="pokemon-name">{{ pokemon.name | titlecase }}</div>
+    </div>
+  </div>
+
+  <div class="load-more-container" *ngIf="hasMorePokemons">
+    <button class="load-more-btn" 
+            (click)="loadPokemons()"
+            [disabled]="isLoading">
+      {{ isLoading ? 'Loading...' : 'Load More Pokémon' }}
+    </button>
+  </div>
+</div>

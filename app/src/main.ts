@@ -1,5 +1,5 @@
 import { platformBrowser } from '@angular/platform-browser';
-import { PokedexAppModule } from './app/pokedex-app.module';
+import { PokedexAppModule } from './app/app.module';
 
 platformBrowser()
   .bootstrapModule(PokedexAppModule)

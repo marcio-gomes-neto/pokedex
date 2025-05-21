@@ -1,0 +1,18 @@
+<div class="pokedex-container">
+  <div class="pokedex-left-panel">
+    <app-pokemon-list 
+      (pokemonSelected)="onPokemonSelected($event)">
+    </app-pokemon-list>
+  </div>
+
+  <div class="pokedex-right-panel">
+    @if (selectedPokemon) {
+      <app-pokemon-details [pokemon]="selectedPokemon"></app-pokemon-details>
+    } @else {
+      <div class="no-pokemon-selected">
+        <img src="assets/pokeball.png" alt="Pokéball" class="empty-pokeball">
+        <p>Select a Pokémon to view details</p>
+      </div>
+    }
+  </div>
+</div>

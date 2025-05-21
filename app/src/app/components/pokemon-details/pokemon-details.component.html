@@ -1,0 +1,40 @@
+<div class="pokemon-details-container">
+  <div class="pokemon-header">
+    <h2 class="pokemon-name">{{ pokemon.name | titlecase }}</h2>
+    <span class="pokemon-id">#{{ pokemon.id | number:'3.0-0' }}</span>
+  </div>
+
+  <div class="pokemon-image-container">
+    <img [src]="getPokemonImage()" 
+         [alt]="pokemon.name" 
+         class="pokemon-image"
+         onerror="this.src='assets/pokeball.png'">
+  </div>
+
+  <div class="pokemon-types">
+    <span *ngFor="let type of pokemon.types" 
+          class="pokemon-type" 
+          [class]="getTypeClass(type.type.name)">
+      {{ type.type.name | uppercase }}
+    </span>
+  </div>
+
+  <div class="pokemon-stats">
+    <div class="stat-item">
+      <span class="stat-label">Height</span>
+      <span class="stat-value">{{ convertDecimetersToFeetInches(pokemon.height) }}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Weight</span>
+      <span class="stat-value">{{ convertHectogramsToPounds(pokemon.weight) }}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Base Exp</span>
+      <span class="stat-value">{{ pokemon.base_experience }}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Order</span>
+      <span class="stat-value">{{ pokemon.order }}</span>
+    </div>
+  </div>
+</div>
